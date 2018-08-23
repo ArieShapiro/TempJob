@@ -13,7 +13,7 @@ const bodyParser = require('body-parser');
 var cors = require('cors');
 
 app.use(cors({
-    origin: ['http://localhost:8080'],
+    origin: ['http://localhost:8081'],
     credentials: true // enable set cookie
 }));
 
@@ -118,7 +118,7 @@ app.listen(process.env.port || 8000, function () {
 });
 */
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => console.log(`Page builder app listening on port ${PORT}!`));
 
 
