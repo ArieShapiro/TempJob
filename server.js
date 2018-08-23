@@ -1,6 +1,4 @@
-const axios = require('axios');
-
-//import mongoose
+1//import mongoose
 const mongoose = require('mongoose');
 
 //import express
@@ -77,7 +75,7 @@ app.post('/jobs', (req, res) => {
 });
 
 app.delete('/jobs', (req, res) => {
-    Job.remove({ id: req.query.id }, function (err, data) {
+    Job.deleteOne({ id: req.query.id }, function (err, data) {
         if (err) {
             throw err;
         }
@@ -102,30 +100,13 @@ app.post('/employers', (req, res) => {
 
 app.delete('/employers', (req, res) => {
 
-    Employer.remove({ id: req.query.id }, function (err, data) {
+    Employer.deleteOne({ id: req.query.id }, function (err, data) {
         if (err) {
             throw err;
         }
         res.json(data);
     });
 });
-
-
-//listen to requests
-/*
-const port = process.env.PORT || 8000;
-
-app.listen(process.env.port || 8000, function () {
-    console.log(`listening for requests on port ${port}...`);
-});
-*/
-
-
-axios.get('http://localhost:8000/jobs').then(res => {
-    console.log(process.env.NODE_ENV)
-}).catch();
-
-
 
 
 
