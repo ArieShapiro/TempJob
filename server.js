@@ -1,3 +1,5 @@
+const axios = require('axios');
+
 //import mongoose
 const mongoose = require('mongoose');
 
@@ -118,8 +120,20 @@ app.listen(process.env.port || 8000, function () {
 });
 */
 
+
+axios.get('http://localhost:8000/jobs').then(res => {
+    console.log(process.env.NODE_ENV)
+}).catch();
+
+
+
+
+
 const PORT = process.env.PORT || 8000;
-app.listen(PORT, () => console.log(`Page builder app listening on port ${PORT}!`));
+app.listen(PORT, () => {
+    console.log(`Page builder app listening on port ${PORT}!`)
+
+});
 
 
 
