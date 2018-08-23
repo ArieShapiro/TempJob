@@ -11,13 +11,16 @@ const bodyParser = require('body-parser');
 
 //enable all cors
 var cors = require('cors');
-app.use(cors());
 
+app.use(cors({
+    origin: ['http://localhost:8081'],
+    credentials: true // enable set cookie
+}));
 
 app.use(bodyParser.json())
 
 //for deploying on Heroku
-app . use ( express . static ( 'dist' ));
+app.use(express.static('dist'));
 
 
 //connect to jobs collection in mongoDB
@@ -107,11 +110,16 @@ app.delete('/employers', (req, res) => {
 
 
 //listen to requests
-const port = process . env . PORT || 8000 ;
+/*
+const port = process.env.PORT || 8000;
 
 app.listen(process.env.port || 8000, function () {
     console.log(`listening for requests on port ${port}...`);
 });
+*/
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Page builder app listening on port ${PORT}!`));
 
 
 
