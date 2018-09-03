@@ -13,7 +13,7 @@ const bodyParser = require('body-parser');
 var cors = require('cors');
 
 app.use(cors({
-    origin: ['http://192.168.43.25:8080'],
+    origin: ['http://10.11.12.58:8080'],
     credentials: true // enable set cookie
 }));
 
