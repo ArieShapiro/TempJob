@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 //import express
 const express = require('express');
-//set up express app
+//set up express 
 const app = express();
 
 //we need it for being able to use req.body??
