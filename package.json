@@ -23,9 +23,9 @@
   "_spec": "package-json@^4.0.0",
   "_where": "C:\\Users\\Arie\\Desktop\\TempJob\\temp-job\\backend\\node_modules\\latest-version",
   "author": {
-    "name": "Sindre Sorhus",
-    "email": "sindresorhus@gmail.com",
-    "url": "sindresorhus.com"
+    "name": "Arie Shapiro",
+    "email": "aryehshapiro@gmail.com",
+    "url": "http://trendhaus.at"
   },
   "bugs": {
     "url": "https://github.com/sindresorhus/package-json/issues"
