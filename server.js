@@ -1,4 +1,14 @@
-1//import mongoose
+const nodemailer = require('nodemailer');
+
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'ridinleo@gmail.com',
+        pass: '4318516now'
+    }
+});
+
+//import mongoose
 const mongoose = require('mongoose');
 
 //import express
@@ -13,7 +23,7 @@ const bodyParser = require('body-parser');
 var cors = require('cors');
 
 app.use(cors({
-    origin: ['http://10.11.12.58:8080'],
+    origin: ['http://192.168.0.241:8080/', 'http://10.11.12.58:8080', 'http://localhost:8080/'],
     credentials: true // enable set cookie
 }));
 
@@ -52,14 +62,14 @@ var employerSchema = new mongoose.Schema({
     image: String,
     password: String,
     applicants: Array,
-    id: String
+    id: String,
+    isNowCreated: Boolean
 });
 //create employer data model
 var Employer = mongoose.model('Employer', employerSchema);
 
 
 //HANDLE JOBS DB REQUESTS
-
 app.get('/jobs', (req, res) => {
     Job.find({}, (err, data) => {
         if (err) throw err;
@@ -96,10 +106,25 @@ app.post('/employers', (req, res) => {
         if (err) throw err;
         res.json(data);
     });
+    if (req.body.isNowCreated) {
+        var mailOptions = {
+            from: 'ridinleo@gmail.com',
+            to: 'ridinleo@gmail.com',
+            subject: 'Notification From TempJob!',
+            text: 'Your account was created successfully!'
+        };
+
+        transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log('Email sent: ' + info.response);
+            }
+        });
+    }
 });
 
 app.delete('/employers', (req, res) => {
-
     Employer.deleteOne({ id: req.query.id }, function (err, data) {
         if (err) {
             throw err;
@@ -112,8 +137,7 @@ app.delete('/employers', (req, res) => {
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
-    console.log(`Page builder app listening on port ${PORT}!`)
-
+    console.log(`Listening on port ${PORT}...`)
 });
 
 

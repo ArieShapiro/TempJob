@@ -37,6 +37,7 @@
     "express": "^4.16.3",
     "got": "^6.7.1",
     "mongoose": "^5.2.9",
+    "nodemailer": "^4.6.8",
     "registry-auth-token": "^3.0.1",
     "registry-url": "^3.0.3",
     "semver": "^5.1.0"
