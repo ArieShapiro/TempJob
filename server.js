@@ -1,10 +1,13 @@
+require('dotenv/config')
+
+//setting up email
 const nodemailer = require('nodemailer');
 
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'ridinleo@gmail.com',
-        pass: '4318516now'
+        user: process.env.APP_EMAIL,
+        pass: process.env.APP_EMAIL_PASSWORD
     }
 });
 
@@ -29,12 +32,12 @@ app.use(cors({
 
 app.use(bodyParser.json())
 
-//for deploying on Heroku
+//Serve the dist folder (with the Vue content)
 app.use(express.static('dist'));
 
 
 //connect to jobs collection in mongoDB
-mongoose.connect('mongodb://ninja:moshiach516@ds111012.mlab.com:11012/job_db');
+mongoose.connect(process.env.MONGODB_URI);
 
 
 //define job object schema
@@ -138,6 +141,7 @@ app.delete('/employers', (req, res) => {
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}...`)
+    
 });
 
 

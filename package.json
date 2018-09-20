@@ -46,6 +46,7 @@
   "description": "Get metadata of a package from the npm registry",
   "devDependencies": {
     "ava": "*",
+    "dotenv": "^6.0.0",
     "mock-private-registry": "^1.1.0",
     "xo": "*"
   },
