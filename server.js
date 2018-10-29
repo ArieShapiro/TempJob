@@ -6,25 +6,19 @@ const nodemailer = require('nodemailer');
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: process.env.APP_EMAIL,
-        pass: process.env.APP_EMAIL_PASSWORD
+        user: 'ridinleo@gmail.com',
+        pass: '4318516now'
     }
 });
 
-//import mongoose
 const mongoose = require('mongoose');
-
-//import express
 const express = require('express');
-//set up express 
 const app = express();
-
-//we need it for being able to use req.body??
 const bodyParser = require('body-parser');
+app.use(bodyParser.json());
 
 //enable all cors
 var cors = require('cors');
-
 app.use(cors({
     origin: ['http://localhost:8080/', 'http://10.11.12.58:8080', 'http://192.168.0.241:8080/'],
     credentials: true // enable set cookie
@@ -39,14 +33,14 @@ app.use(function(req, res, next) {
     next();
 });
 
-app.use(bodyParser.json())
+
 
 //Serve the dist folder (with the Vue content)
 app.use(express.static('dist'));
 
 
 //connect to jobs collection in mongoDB
-mongoose.connect(process.env.MONGODB_URI);
+mongoose.connect('mongodb://ninja:moshiach516@ds111012.mlab.com:11012/job_db');
 
 
 //define job object schema
