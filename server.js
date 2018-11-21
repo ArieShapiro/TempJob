@@ -19,6 +19,7 @@ app.use(bodyParser.json());
 
 //enable all cors
 var cors = require('cors');
+
 app.use(cors({
     origin: ['http://localhost:8080/', 'http://10.11.12.58:8080', 'http://192.168.0.241:8080/'],
     credentials: true // enable set cookie
