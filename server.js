@@ -115,8 +115,8 @@ app.post('/employers', (req, res) => {
     });
     if (req.body.isNowCreated) {
         var mailOptions = {
-            from: 'ridinleo@gmail.com',
-            to: 'ridinleo@gmail.com',
+            from: '',
+            to: '',
             subject: 'Notification From TempJob!',
             text: 'Your account was created successfully!'
         };
